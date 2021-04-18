@@ -3,3 +3,7 @@ spring:
     name: ledApp
 server:
   port: 8080
+led:
+  settings:
+    length: 40
+    gpiopin:

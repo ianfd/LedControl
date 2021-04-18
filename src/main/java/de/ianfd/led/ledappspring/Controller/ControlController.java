@@ -2,15 +2,13 @@ package de.ianfd.led.ledappspring.Controller;
 /*
  * Created by ian on 26.01.21
  * Location: de.ianfd.led.ledappspring.Controller
- * Created for the project ledapp-spring with the name ControllController
+ * Created for the project ledapp-spring with the name ControlController
  * What a name xD
  */
 
 import de.ianfd.led.ledappspring.LedService;
-import de.ianfd.led.ledappspring.effects.RunningRainbowEffect;
-import de.ianfd.led.ledappspring.effects.SolidColor;
-import de.ianfd.led.ledappspring.effects.StaticRainbowEffect;
-import de.ianfd.led.ledappspring.effects.Utils;
+import de.ianfd.led.ledappspring.effects.*;
+import de.ianfd.led.ledappspring.model.CometModel;
 import de.ianfd.led.ledappspring.model.RunningRainbowModel;
 import de.ianfd.led.ledappspring.model.StaticColorModel;
 import de.ianfd.led.ledappspring.model.StaticRainbowModel;
@@ -33,7 +31,7 @@ public class ControlController {
     @PostMapping("/staticcolor")
     @ResponseBody
     public ResponseEntity<String> setStaticColor(@RequestBody StaticColorModel staticColorModel) {
-        SolidColor solidColor = new SolidColor("Solid Color", 500);
+        SolidColorEffect solidColor = new SolidColorEffect("Solid Color", 500);
         solidColor.setColor(staticColorModel.getR(), staticColorModel.getG(), staticColorModel.getB(), staticColorModel.getBrightness());
         ledService.setEffect(solidColor);
         return ResponseEntity.status(HttpStatus.OK).body("successful");
@@ -57,6 +55,17 @@ public class ControlController {
         return ResponseEntity.status(HttpStatus.OK).body("successful");
     }
 
+    @PostMapping("/comet")
+    @ResponseBody
+    public ResponseEntity<String> setComet(@RequestBody CometModel cometModel) {
+        CometEffect cometEffect = new CometEffect("Comet Effect", cometModel.getSpeed());
+        cometEffect.setHeadColor(cometModel.getCometR(), cometModel.getCometG(), cometModel.getCometB());
+        cometEffect.setTailLength(cometModel.getTailLength());
+        cometEffect.setMaxBrightness(cometModel.getBrightness()); // brightness ranges from 0-255
+        ledService.setEffect(cometEffect);
+        return ResponseEntity.status(HttpStatus.OK).body("successful");
+    }
+
     @PostMapping("/clear")
     @ResponseBody
     public ResponseEntity<String> clearEffects() {
@@ -72,8 +81,6 @@ public class ControlController {
         }
         return ResponseEntity.status(HttpStatus.OK).body(name);
     }
-
-
 
 
 }

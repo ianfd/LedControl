@@ -8,14 +8,14 @@ package de.ianfd.led.ledappspring.effects;
 import com.github.mbelling.ws281x.Color;
 import com.github.mbelling.ws281x.Ws281xLedStrip;
 
-public class SolidColor extends BasicEffect {
+public class SolidColorEffect extends BasicEffect {
 
     private int brightness = 25; // brightness ranges from 0-255 where 0 is black and 255 is blinding bright
     private int red = 10;
     private int green = 10;
     private int blue = 10;
 
-    public SolidColor(String name, int delay) {
+    public SolidColorEffect(String name, int delay) {
         super(name, delay);
     }
 

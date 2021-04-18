@@ -19,6 +19,7 @@ public class LedScheduler {
         this.ledService = ledService;
     }
 
+    // executes every 10 ms a frame update
     @Scheduled(fixedDelayString = "10")
     public void runLed() {
         if (ledService.getCurrentEffect() != null) {

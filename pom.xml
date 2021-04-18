@@ -20,7 +20,7 @@
     <repositories>
         <repository>
             <id>ianfd</id>
-            <url>https://nexus.ianfd.de/repository/ianfd/</url>
+            <url>https://maven.ianfd.de/releases/</url>
         </repository>
     </repositories>
 
