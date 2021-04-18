@@ -5,6 +5,7 @@ package de.ianfd.led.ledappspring;
  * Created for the project ledapp-spring with the name LedService
  */
 
+import com.github.mbelling.ws281x.Color;
 import com.github.mbelling.ws281x.LedStripType;
 import com.github.mbelling.ws281x.Ws281xLedStrip;
 import de.ianfd.led.ledappspring.effects.BasicEffect;
@@ -44,6 +45,13 @@ public class LedService {
 
     public Ws281xLedStrip getLed() {
         return led;
+    }
+
+    public void clearEffects() {
+        for (int i = 0; i < led.getLedsCount(); i++) {
+            getLed().setPixel(i, Color.BLACK);
+        }
+        getLed().render();
     }
 
 }

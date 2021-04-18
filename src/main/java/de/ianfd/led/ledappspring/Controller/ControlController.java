@@ -57,5 +57,23 @@ public class ControlController {
         return ResponseEntity.status(HttpStatus.OK).body("successful");
     }
 
+    @PostMapping("/clear")
+    @ResponseBody
+    public ResponseEntity<String> clearEffects() {
+        ledService.clearEffects();
+        return ResponseEntity.status(HttpStatus.OK).body("successful");
+    }
+
+    @GetMapping("/getcurrenteffect")
+    public ResponseEntity<String> getCurrentEffect() {
+        String name = "n/a";
+        if (ledService.getCurrentEffect() != null) {
+            name = ledService.getCurrentEffect().getName();
+        }
+        return ResponseEntity.status(HttpStatus.OK).body(name);
+    }
+
+
+
 
 }
