@@ -23,18 +23,20 @@ public class LedService {
 
     @Autowired
     public LedService() {
-        this.led = new Ws281xLedStrip(40, // led count
+        this.led = new Ws281xLedStrip(35, // led count
                 18, // GPIO pin, must support pwm
                 800000, //frequency
                 10, //DMA, see also https://github.com/jgarff/rpi_ws281x/issues/224
                 100, //brightness
                 0, //pwm channel, GPIO 18 supports PWM0
                 false, //invert
-                LedStripType.WS2811_STRIP_RGB,
+                LedStripType.WS2811_STRIP_GRB,
                 true); // clear on exit
     }
 
     public void setEffect(BasicEffect newEffect) {
+        log.info("Clearing the Strip from effects");
+        clearEffects();
         log.info("Setting new effect active: " + newEffect.getName());
         this.basicEffect = newEffect;
     }

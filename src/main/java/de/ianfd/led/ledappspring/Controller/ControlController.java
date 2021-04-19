@@ -59,8 +59,11 @@ public class ControlController {
     @ResponseBody
     public ResponseEntity<String> setComet(@RequestBody CometModel cometModel) {
         CometEffect cometEffect = new CometEffect("Comet Effect", cometModel.getSpeed());
-        cometEffect.setHeadColor(cometModel.getCometR(), cometModel.getCometG(), cometModel.getCometB());
         cometEffect.setTailLength(cometModel.getTailLength());
+        System.out.println("Brightness: " + cometModel.getBrightness() + " / Tail length: " + cometModel.getTailLength() + " / Speed: " + cometModel.getSpeed() + " / Red: " + cometModel.getCometR() +
+                " / Green: " + cometModel.getCometG() + " / Blue: " + cometModel.getCometB());
+        cometEffect.setHeadColor(cometModel.getCometR(), cometModel.getCometG(), cometModel.getCometB());
+        cometEffect.setBackgroundColor(cometModel.getBgR(), cometModel.getBgG(), cometModel.getBgB(), cometModel.getBackgroundBrightness());
         cometEffect.setMaxBrightness(cometModel.getBrightness()); // brightness ranges from 0-255
         ledService.setEffect(cometEffect);
         return ResponseEntity.status(HttpStatus.OK).body("successful");

@@ -10,6 +10,10 @@ public class CometModel {
     private int cometR = 0;
     private int cometG = 0;
     private int cometB = 0;
+    private int bgR = 0;
+    private int bgG = 0;
+    private int bgB = 0;
+    private int backgroundBrightness= 0;
     private int brightness = 0;
     private int speed = 0;
     private int tailLength = 0;
@@ -72,5 +76,37 @@ public class CometModel {
 
     public void setTailLength(int tailLength) {
         this.tailLength = tailLength;
+    }
+
+    public int getBgR() {
+        return bgR;
+    }
+
+    public void setBgR(int bgR) {
+        this.bgR = bgR;
+    }
+
+    public int getBgG() {
+        return bgG;
+    }
+
+    public void setBgG(int bgG) {
+        this.bgG = bgG;
+    }
+
+    public int getBgB() {
+        return bgB;
+    }
+
+    public void setBgB(int bgB) {
+        this.bgB = bgB;
+    }
+
+    public int getBackgroundBrightness() {
+        return backgroundBrightness;
+    }
+
+    public void setBackgroundBrightness(int backgroundBrightness) {
+        this.backgroundBrightness = backgroundBrightness;
     }
 }
